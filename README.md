@@ -1,5 +1,5 @@
 # PomXYZ
-scripts based on Matlab to analysis spatial distribution of PomXYZ
+scripts based on Matlab to analysis spatial distribution of PomXYZ. PyTom and STOPGAP are needed.
 
 1) XP_anaSeg.m
 analysis Pom cluster filament fragments orientation.
