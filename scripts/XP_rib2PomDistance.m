@@ -3,11 +3,11 @@
 % plot ribosome density map back
 % Pom cluster segmentation from EMAN
 
-%segFolder = '/fs/gpfs03/lv03/pool/pool-plitzko/Peng_Xu/FromMJ/tomography/t8/seg/amira';
+%segFolder = ' ';
 %cd(segFolder)
 
-whichPom = 'T27bin4_cluster__cluster_seg.mrc';% segmentation of pom cluster
-rib = 'plotback_clean_2nd.mrc';% plot back of ribosomes
+whichPom = 'xxxxx.mrc';% segmentation of pom cluster
+rib = 'xxxxx.mrc';% plot back of ribosomes
 
 
 ps=0.352; % pixelsize in nm
