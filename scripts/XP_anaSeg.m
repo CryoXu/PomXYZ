@@ -4,7 +4,7 @@
 thr=0.6;
 minSz=15;
 
-seg=tom_mrcread('T27bin2_DNA__DNA_seg_final_cleaned_forangleCalculation.mrc');
+seg=tom_mrcread('XXXXX.mrc');
 seg=seg.Value;
 
 %skel=tom_skeleton3D(seg>thr);
