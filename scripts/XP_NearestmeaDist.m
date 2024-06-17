@@ -4,8 +4,8 @@ starName='run_data.star';
 nrBin=400; % bins for hist
 distCut=0;%  %in voxel
 pixsize = 0.352;% in nm
-filtStarName='filtStar_run_data.star';
-pathToTOM='/fs/gpfs41/lv01/fileset02/pool/pool-plitzko/Peng_Xu/Dominik/20201023/wt/T27/proc/segmentation/segmentations/final'; %abs path to tomFolde from nemotoc project
+filtStarName='xxxxx.star';% star file from Relion
+pathToTOM=''; %abs path to tomFolde from nemotoc project
 
 %% Code
 addpath(genpath(pathToTOM));
