@@ -6,10 +6,8 @@
 %segFolder = '/fs/gpfs03/lv03/pool/pool-plitzko/Peng_Xu/FromMJ/tomography/t8/seg/amira';
 %cd(segFolder)
 
-Pom = 'T27bin4_cluster__cluster_seg.mrc';% segmentation of pom cluster
+whichPom = 'T27bin4_cluster__cluster_seg.mrc';% segmentation of pom cluster
 rib = 'plotback_clean_2nd.mrc';% plot back of ribosomes
-
-whichPom = Pom; % from which Pom do you want to measure the distance?
 
 
 ps=0.352; % pixelsize in nm
@@ -23,7 +21,7 @@ histBins = 1000; % number of bins for the histogram
 % measure distances from Pom
 % create a distance matrix 
 mat = tom_mrcread(whichPom);mat = mat.Value;
-%tom_volxyz (mat);
+
 
 % binarize the segmentation,if didn't do before
 %mat=double(mat);
@@ -32,14 +30,14 @@ mat = tom_mrcread(whichPom);mat = mat.Value;
 
 % generate 'distance matrix'
 mat1 = bwdist(mat);
-%tom_volxyz (mat1);
+
 
 
 %% 
 ribo=tom_mrcread(rib);ribo = ribo.Value;
 %tom_volxyz (ribo);
 
-% binarize if necessary
+%  binarize the segmentation,if didn't do before
 %ribo=double(ribo);
 %ribo(find(ribo<0.9))=0;
 %ribo(find(ribo>0.9))=1;
