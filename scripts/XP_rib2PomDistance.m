@@ -6,10 +6,10 @@
 %segFolder = '/fs/gpfs03/lv03/pool/pool-plitzko/Peng_Xu/FromMJ/tomography/t8/seg/amira';
 %cd(segFolder)
 
-INMrec = 'T27bin4_cluster__cluster_seg.mrc';% segmentation of pom cluster
-chromrec = 'plotback_clean_2nd.mrc';% plot back of ribosomes
+Pom = 'T27bin4_cluster__cluster_seg.mrc';% segmentation of pom cluster
+rib = 'plotback_clean_2nd.mrc';% plot back of ribosomes
 
-whichINM = INMrec; % from which INM do you want to measure the distance?
+whichPom = Pom; % from which Pom do you want to measure the distance?
 
 
 ps=0.352; % pixelsize in nm
@@ -20,12 +20,12 @@ histBins = 1000; % number of bins for the histogram
 
 
 
-% measure distances from INM
+% measure distances from Pom
 % create a distance matrix 
-mat = tom_mrcread(whichINM);mat = mat.Value;
+mat = tom_mrcread(whichPom);mat = mat.Value;
 %tom_volxyz (mat);
 
-% binarize the segmentation, rarely necessary
+% binarize the segmentation,if didn't do before
 %mat=double(mat);
 %mat(find(mat<0.9))=0;
 %mat(find(mat>0.9))=1;
@@ -36,22 +36,22 @@ mat1 = bwdist(mat);
 
 
 %% 
-chrom=tom_mrcread(chromrec);chrom = chrom.Value;
-%tom_volxyz (chrom);
+ribo=tom_mrcread(rib);ribo = ribo.Value;
+%tom_volxyz (ribo);
 
 % binarize if necessary
-%chrom=double(chrom);
-%chrom(find(chrom<0.9))=0;
-%chrom(find(chrom>0.9))=1;
+%ribo=double(ribo);
+%ribo(find(ribo<0.9))=0;
+%ribo(find(ribo>0.9))=1;
 
 % transfrom to 1D vector containnig only 1s and resample data
-v=find(chrom>0);
+v=find(ribo>0);
 out=randperm(size(v,1));
 vr=v(out);
 vr_resample=vr(1:resample:end);
 coor=zeros(size(vr_resample,1),3);
-%[x y z] = ind2sub ([size(chrom,1) size(chrom,2) size(chrom,3)],vr_resample);
-[coor(:,1) coor(:,2) coor(:,3)] = ind2sub ([size(chrom,1) size(chrom,2) size(chrom,3)],vr_resample);
+%[x y z] = ind2sub ([size(ribo,1) size(ribo,2) size(ribo,3)],vr_resample);
+[coor(:,1) coor(:,2) coor(:,3)] = ind2sub ([size(ribo,1) size(ribo,2) size(ribo,3)],vr_resample);
 
 % get distances in pixels
 for i =1:size(coor,1)
